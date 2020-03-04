@@ -1,0 +1,8 @@
+spotify
+slack
+postman
+code --classic
+node --classic
+gimp
+arduino
+telegram-desktop

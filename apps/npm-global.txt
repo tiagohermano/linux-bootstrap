@@ -1,0 +1,5 @@
+@ionic/cli
+create-react-app
+n
+npm
+yarn
