@@ -7,3 +7,4 @@ gimp
 arduino
 telegram-desktop
 dbeaver-ce
+vlc
