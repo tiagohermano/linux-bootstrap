@@ -6,3 +6,4 @@ node --classic
 gimp
 arduino
 telegram-desktop
+dbeaver-ce
