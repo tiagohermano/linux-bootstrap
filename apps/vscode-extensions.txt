@@ -13,3 +13,4 @@ ritwickdey.LiveServer
 rocketseat.RocketseatReactJS
 silvenon.mdx
 teabyii.ayu
+EditorConfig.EditorConfig
