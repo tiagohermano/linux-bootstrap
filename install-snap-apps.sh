@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Fill the array below with your Snapcraft favorite extensions
+# Fill the array below with your favorite Snapcraft apps
 snap_apps=(
   "slack"
   "postman"
@@ -11,7 +11,6 @@ snap_apps=(
   "telegram-desktop"
   "dbeaver-ce"
   "vlc"
-  "colorpicker-app"
 )
 
 echo "Enabling Snap Package manager..."

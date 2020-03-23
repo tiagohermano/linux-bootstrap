@@ -13,12 +13,13 @@ then
 elif [ "${1,,}" == "arch" || "${1,,}" == "manjaro" ]
 then
 	sudo ./arch/configure-arch.sh
-
+	sudo ./arch/apps.sh
 else
 	echo -e "You misspelled your system, or it is not supported."
 fi
 
 ./config-git.sh
+sudo ./install-node.sh
 sudo ./install-snap-apps.sh
 ./install-vscode-extensions.sh
 ./install-npm-global-packages.sh
