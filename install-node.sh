@@ -1,4 +1,4 @@
-# Install latest node
+# Install latest node w/ n(node version manager)
 git clone https://github.com/tj/n ${HOME}/sources/tj/n
 cd ${HOME}/sources/tj/n
 PREFIX=${HOME}/apps/n make install
