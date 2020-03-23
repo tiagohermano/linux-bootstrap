@@ -23,6 +23,6 @@ sudo ./install-node.sh
 sudo ./install-snap-apps.sh
 ./install-vscode-extensions.sh
 ./install-npm-global-packages.sh
-./install-oh-my-zsh.sh
+sudo ./install-oh-my-zsh.sh
 
 
