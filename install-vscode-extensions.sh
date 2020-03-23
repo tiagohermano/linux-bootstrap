@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# Enable Visual Studio Code to watch a large project for changes
+echo "fs.inotify.max_user_watches=524288" >> /etc/sysctl.conf
+sudo sysctl -p
+
+
 # Fill the array below with your Visual Studio Code favorite extensions
 vscode_extensions=(
   "acidic9.p5js-snippets"
