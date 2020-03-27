@@ -12,8 +12,5 @@ sudo pacman-key --refresh-keys
 echo "Setting keyboard layout..."
 setxkbmap -model abnt2 -layout br -variant ,abnt2
 
-echo "Installing Node.js and npm..."
-pacman -S nodejs npm
-
 echo "Enabling Visual Studio Code to watch a large project for changes..."
 echo fs.inotify.max_user_watches=524288 | sudo tee /etc/sysctl.d/50-max-user-watches.conf && sudo sysctl --system
