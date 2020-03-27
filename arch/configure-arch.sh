@@ -16,4 +16,4 @@ echo "Installing Node.js and npm..."
 pacman -S nodejs npm
 
 echo "Enabling Visual Studio Code to watch a large project for changes..."
-echo fs.inotify.max_user_watches=524288 | sudo tee /etc/sysctl.d/40-max-user-watches.conf && sudo sysctl --system
+echo fs.inotify.max_user_watches=524288 | sudo tee /etc/sysctl.d/50-max-user-watches.conf && sudo sysctl --system
