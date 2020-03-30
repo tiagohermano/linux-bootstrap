@@ -9,11 +9,14 @@ elif [ "${1,,}" == "ubuntu" ] || [ "${1,,}" == "elementary" || [ "${1,,}" == "mi
 then
 	sudo ./ubuntu/configure-ubuntu.sh
 	sudo ./ubuntu/install-apt-packages.sh
+	sudo ./ubuntu/install-fonts.sh
 
 elif [ "${1,,}" == "arch" || "${1,,}" == "manjaro" ]
 then
 	sudo ./arch/configure-arch.sh
-	sudo ./arch/apps.sh
+	sudo ./arch/pacman-apps.sh
+	sudo ./arch/install-fonts.sh
+
 else
 	echo -e "You misspelled your system, or it is not supported."
 fi
