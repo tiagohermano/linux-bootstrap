@@ -4,10 +4,12 @@ set relativenumber
 set noerrorbells
 set tabstop=2 softtabstop=2
 set expandtab
+set nowrap
 set shiftwidth=2
 set smartindent
 set incsearch
-set backupcopy=yes
+set nobackup
+set foldmethod=manual
 
 " Give more space for displaying messages.
 set cmdheight=2
@@ -37,6 +39,9 @@ Plug 'ervandew/supertab'
 Plug 'Galooshi/vim-import-js'
 Plug 'easymotion/vim-easymotion'
 
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+
 " THEMES
 Plug 'morhetz/gruvbox'
 Plug 'franbach/miramare'
@@ -48,6 +53,7 @@ Plug 'maxmellon/vim-jsx-pretty'
 Plug 'styled-components/vim-styled-components'
 Plug 'dense-analysis/ale'
 Plug 'Yggdroot/indentLine'
+Plug 'hail2u/vim-css3-syntax'
 
 Plug 'prettier/vim-prettier', {
     \ 'do': 'yarn install',
@@ -73,10 +79,12 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'mattn/emmet-vim'
 Plug 'valloric/youcompleteme'
-" Plug 'neoclide/coc.nvim' " INTELlISENSE ENGINE / AUTO COMPLETION
+" Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 
 Plug 'epilande/vim-react-snippets'
 Plug 'sirver/ultisnips'
+
+Plug 'thaerkh/vim-workspace'
 
 " GIT PLUGINS
 Plug 'xuyuanp/nerdtree-git-plugin'
@@ -90,18 +98,31 @@ call plug#end()
 nnoremap <Space> <nop>
 map <Space> <Leader>
 
-" TABS NAVIGATION MAPS
+" TABS & SPLITS NAVIGATION MAPS
 map <C-j> <C-W>j
 map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
 
+set splitbelow splitright 
+
+" Make adjusting split sizes a bit more friendly
+nnoremap <silent> <C-Left> :vertical resize +3<CR>
+nnoremap <silent> <C-Right> :vertical resize -3<CR>
+nnoremap <silent> <C-Up> :resize +3<CR>
+nnoremap <silent> <C-Down> :resize -3<CR>
+
 " map Easymotion
 map  <Leader>f <Plug>(easymotion-bd-f)
 nmap <Leader>f <Plug>(easymotion-overwin-f)
 
-" Encontrar multiplas ocorrencias de uma seleção
+" Substituir multiplas ocorrencias de uma seleção
 nnoremap <F2> :%s/<C-r><C-w>//gc<left><left><left>
+
+" Go to definition
+nnoremap <leader>gd :YcmCompleter GoTo<CR>
+"nmap <leader>gd <Plug>(coc-defition)
+"nmap <leader>gr <Plug>(coc-references)
 
 " Configuracoes visuais do airline
 let g:airline_theme='dark'
@@ -127,14 +148,13 @@ let g:ale_completion_enabled = 1
 
 " NERDTREE SETTINGS
 nmap <C-b> :NERDTreeToggle<CR>
-let g:NERDTreeIgnore = ['^node_modules$']
+let g:NERDTreeIgnore = ['^node_modules$', '^.git$']
 let NERDTreeShowHidden=1
 
 " COLORSCHEME SETTINGS
 set termguicolors
 colorscheme gruvbox
 set background=dark
-
 
 if executable('rg')
   let g:rg_derive_root='true'
@@ -150,6 +170,12 @@ let g:user_emmet_settings = {
 \
 \  },
 \}
+
+augroup VimCSS3Syntax
+  autocmd!
+
+  autocmd FileType css setlocal iskeyword+=-
+augroup END
 
 " CREATE NEW FILE BINDING
 command -nargs=1 E execute('silent! !mkdir -p "$(dirname "<args>")"') <Bar> e <args>
