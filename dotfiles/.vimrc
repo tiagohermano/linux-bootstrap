@@ -146,6 +146,16 @@ let g:ale_fixers = {'javascript': ['prettier_standard'], 'typescript': ['prettie
 let g:ale_linters = {'javascript': ['']}
 let g:ale_completion_enabled = 1
 
+" PRETTIER CONFIG
+" print semicolons
+let g:prettier#config#semi = 'false'
+
+" single quotes over double quotes
+let g:prettier#config#single_quote = 'true'
+
+" print spaces between brackets
+let g:prettier#config#bracket_spacing = 'true'
+
 " NERDTREE SETTINGS
 nmap <C-b> :NERDTreeToggle<CR>
 let g:NERDTreeIgnore = ['^node_modules$', '^.git$']
