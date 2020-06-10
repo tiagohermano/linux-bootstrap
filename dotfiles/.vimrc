@@ -8,6 +8,7 @@ set nowrap
 set shiftwidth=2
 set smartindent
 set incsearch
+set noswapfile
 set nobackup
 set foldmethod=manual
 
@@ -39,7 +40,7 @@ Plug 'ervandew/supertab'
 Plug 'Galooshi/vim-import-js'
 Plug 'easymotion/vim-easymotion'
 
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } } " :Ag (global search) package 'silver searcher' needed
 Plug 'junegunn/fzf.vim'
 
 " THEMES
@@ -112,6 +113,10 @@ nnoremap <silent> <C-Right> :vertical resize -3<CR>
 nnoremap <silent> <C-Up> :resize +3<CR>
 nnoremap <silent> <C-Down> :resize -3<CR>
 
+" Hunk-add and hunk-revert for chunk staging
+nmap <Leader>ga <Plug>(GitGutterStageHunk)
+nmap <Leader>gu <Plug>(GitGutterUndoHunk)
+
 " map Easymotion
 map  <Leader>f <Plug>(easymotion-bd-f)
 nmap <Leader>f <Plug>(easymotion-overwin-f)
@@ -119,10 +124,11 @@ nmap <Leader>f <Plug>(easymotion-overwin-f)
 " Substituir multiplas ocorrencias de uma seleção
 nnoremap <F2> :%s/<C-r><C-w>//gc<left><left><left>
 
+" Pesquisa Global no projeto
+map <C-S-g> :Ag
+
 " Go to definition
 nnoremap <leader>gd :YcmCompleter GoTo<CR>
-"nmap <leader>gd <Plug>(coc-defition)
-"nmap <leader>gr <Plug>(coc-references)
 
 " Configuracoes visuais do airline
 let g:airline_theme='dark'
