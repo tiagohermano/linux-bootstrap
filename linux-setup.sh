@@ -21,6 +21,7 @@ else
 	echo -e "You misspelled your system, or it is not supported."
 fi
 
+cp ./dotfiles/* ~/
 ./config-git.sh
 sudo ./install-node.sh
 sudo ./install-snap-apps.sh
