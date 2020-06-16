@@ -19,3 +19,7 @@ git clone https://aur.archlinux.org/google-chrome.git
 cd google-chrome
 makepkg -s
 sudo pacman -U google-chrome*.tar.xz
+
+# Install xclip [Terminal Clipboard Utilities]
+echo "Installing xclip..."
+sudo pacman -S xclip
