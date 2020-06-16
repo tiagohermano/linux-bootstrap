@@ -17,4 +17,14 @@ if [ $? -eq 0 ]; then
     exit 1;
 fi;
 
+echo "Installing xclip [Terminal Clipboard Utilities]"
+sudo apt-get install -y xclip
+if [ $? -eq 0 ]; then
+  echo "xclip installation complete.";
+  else
+    echo "xclip installation failed.";
+    exit 1;
+fi;
+
+
 sudo apt autoremove

@@ -17,6 +17,12 @@ then
 	sudo ./arch/pacman-apps.sh
 	sudo ./arch/install-fonts.sh
 
+elif [ "${1,,}" == "raspbian" ]
+then
+	sudo ./raspbian/configure-raspbian.sh
+	sudo ./raspbian/apps.sh
+	sudo ./raspbian/install-fonts.sh
+
 else
 	echo -e "You misspelled your system, or it is not supported."
 fi
