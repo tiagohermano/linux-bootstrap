@@ -7,10 +7,33 @@ set expandtab
 set nowrap
 set shiftwidth=2
 set smartindent
+set autoindent
+set copyindent
 set incsearch
 set noswapfile
 set nobackup
 set foldmethod=manual
+
+" Perfomance Improvement Settings 
+set nocursorcolumn
+set nocursorline
+syntax sync minlines=256
+set complete-=i
+set lazyredraw
+
+filetype plugin indent on
+filetype plugin indent on
+
+" COPY SELECTION TO SYSTEM CLIPBOARD
+set clipboard^=unnamed
+noremap <Leader>Y "*y
+noremap <Leader>P "*p
+
+if exists('+termguicolors')
+let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
+  set termguicolors
+endif
 
 " Give more space for displaying messages.
 set cmdheight=2
@@ -22,8 +45,8 @@ set updatetime=50
 " Don't pass messages to |ins-completion-menu|.
 set shortmess+=c
 
-" set colorcolumn=80
-" highlight ColorColumn ctermbg=0 guibg=lightgrey
+" Use 256 colours (Use this setting only if your terminal supports 256 colours)
+set t_Co=256
 
 let g:airline_solarized_bg='molokai'
 
@@ -36,7 +59,7 @@ Plug 'ctrlpvim/ctrlp.vim' " CTRL + P SEARCH
 Plug 'herringtondarkholme/yats.vim' " TYPESCRIPT SYNTAX
 Plug 'scrooloose/nerdcommenter' " COMMENTER
 Plug 'jiangmiao/auto-pairs'
-Plug 'ervandew/supertab'
+"Plug 'ervandew/supertab'
 Plug 'Galooshi/vim-import-js'
 Plug 'easymotion/vim-easymotion'
 
@@ -46,16 +69,18 @@ Plug 'junegunn/fzf.vim'
 " THEMES
 Plug 'morhetz/gruvbox'
 Plug 'franbach/miramare'
+Plug 'sonph/onehalf' , {'rtp': 'vim/'}
+Plug 'dracula/vim', { 'as': 'dracula' }
 
 " SYNTAX HIGHLIGHT
 Plug 'leafgarland/typescript-vim'
 Plug 'pangloss/vim-javascript'
 Plug 'maxmellon/vim-jsx-pretty'
-Plug 'styled-components/vim-styled-components'
+"Plug 'styled-components/vim-styled-components'
 Plug 'dense-analysis/ale'
 Plug 'Yggdroot/indentLine'
 Plug 'hail2u/vim-css3-syntax'
-
+"Plug 'alvan/vim-closetag'
 Plug 'prettier/vim-prettier', {
     \ 'do': 'yarn install',
     \ 'branch': 'release/1.x',
@@ -80,16 +105,17 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'mattn/emmet-vim'
 Plug 'valloric/youcompleteme'
-" Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
+"Plug 'zxqfl/tabnine-vim'
+Plug 'eslint/eslint'
 
 Plug 'epilande/vim-react-snippets'
 Plug 'sirver/ultisnips'
 
-Plug 'thaerkh/vim-workspace'
+"Plug 'thaerkh/vim-workspace'
 
 " GIT PLUGINS
 Plug 'xuyuanp/nerdtree-git-plugin'
-Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+"Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'ryanoasis/vim-devicons'
 Plug 'airblade/vim-gitgutter'
 
@@ -117,6 +143,9 @@ nnoremap <silent> <C-Down> :resize -3<CR>
 nmap <Leader>ga <Plug>(GitGutterStageHunk)
 nmap <Leader>gu <Plug>(GitGutterUndoHunk)
 
+" Unhighlight Text
+nnoremap <silent> <Leader>h :nohl<CR><C-l>
+
 " map Easymotion
 map  <Leader>f <Plug>(easymotion-bd-f)
 nmap <Leader>f <Plug>(easymotion-overwin-f)
@@ -129,6 +158,10 @@ map <C-S-g> :Ag
 
 " Go to definition
 nnoremap <leader>gd :YcmCompleter GoTo<CR>
+
+" Navigate to next Lint/Ale Error
+nmap <silent> <leader>aj :ALENext<cr>
+nmap <silent> <leader>ak :ALEPrevious<cr>
 
 " Configuracoes visuais do airline
 let g:airline_theme='dark'
@@ -149,7 +182,7 @@ let g:UltiSnipsJumpBackwardTrigger = "<C-k>"
 let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/UltiSnips']
 
 let g:ale_fixers = {'javascript': ['prettier_standard'], 'typescript': ['prettier_standard']}
-let g:ale_linters = {'javascript': ['']}
+let g:ale_linters = {'javascript': ['eslint'], 'typescript': ['tsserver', 'tslint']}
 let g:ale_completion_enabled = 1
 
 " PRETTIER CONFIG
@@ -171,6 +204,16 @@ let NERDTreeShowHidden=1
 set termguicolors
 colorscheme gruvbox
 set background=dark
+
+
+" CLOSETAG FILES
+let g:closetag_regions = {
+    \ 'typescript.tsx': 'jsxRegion,tsxRegion',
+    \ 'javascript.jsx': 'jsxRegion',
+    \ }
+
+" JSX COMMENTER SETTINGS
+autocmd FileType javascript.jsx setlocal commentstring={/*\ %s\ */}
 
 if executable('rg')
   let g:rg_derive_root='true'
@@ -194,4 +237,4 @@ augroup VimCSS3Syntax
 augroup END
 
 " CREATE NEW FILE BINDING
-command -nargs=1 E execute('silent! !mkdir -p "$(dirname "<args>")"') <Bar> e <args>
+" command -nargs=1 E execute('silent! !mkdir -p "$(dirname "<args>")"') <Bar> e <args>
