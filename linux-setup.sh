@@ -27,7 +27,7 @@ else
 	echo -e "You misspelled your system, or it is not supported."
 fi
 
-cp ./dotfiles/* ~/
+./copy-dotfiles.sh
 ./config-git.sh
 sudo ./install-oh-my-zsh.sh
 sudo ./install-node.sh
