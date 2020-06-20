@@ -2,12 +2,12 @@
 
 # Fill the array below with your apt essential packages 
 packages=(
-  "ubuntu-restricted-extras",
-  "ffmpeg",
-  "libavcodec-extra",
-  "libavcodec-extra57",
-  "libavutil55", 
-  "libavformat57", 
+  "ubuntu-restricted-extras"
+  "ffmpeg"
+  "libavcodec-extra"
+  "libavcodec-extra57"
+  "libavutil55" 
+  "libavformat57" 
   "zenity" 
   "zsh" 
 )

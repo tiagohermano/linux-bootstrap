@@ -2,11 +2,11 @@
 
 # Fill the array below with your apt-get essential packages 
 packages=(
-  "vim",
-  "snapd",
-  "neovim",
-  "xclip",
-  "virtualbox",
+  "vim"
+  "snapd"
+  "neovim"
+  "xclip"
+  "virtualbox"
 )
 
 for app in "${packages[@]}"; do
