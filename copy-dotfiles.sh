@@ -1,4 +1,4 @@
 #!/bin/bash
-for file in ./dotfiles/*/; do 
+for file in $(pwd)/dotfiles/*/; do 
   cp ./* ~/"$file"
 done
