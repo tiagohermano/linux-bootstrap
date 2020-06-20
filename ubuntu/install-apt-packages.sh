@@ -1,30 +1,27 @@
 #/bin/bash
-echo "Installing Snap package manager..."
-sudo apt install snapd
-if [ $? -eq 0 ]; then
-  echo "Snap installation complete.";
-  else
-    echo "Snap installation failed.";
-    exit 1;
-fi;
 
-echo "Installing media libraries..."
-sudo apt install ubuntu-restricted-extras ffmpeg libavcodec-extra libavcodec-extra57 libavutil55 libavformat57 zenity -y
-if [ $? -eq 0 ]; then
-  echo "Media libraries installation complete.";
-  else
-    echo "Media libraries installation failed.";
-    exit 1;
-fi;
+# Fill the array below with your apt essential packages 
+packages=(
+  "ubuntu-restricted-extras",
+  "ffmpeg",
+  "libavcodec-extra",
+  "libavcodec-extra57",
+  "libavutil55", 
+  "libavformat57", 
+  "zenity" 
+  "zsh" 
+)
 
-echo "Installing xclip [Terminal Clipboard Utilities]"
-sudo apt-get install -y xclip
-if [ $? -eq 0 ]; then
-  echo "xclip installation complete.";
-  else
-    echo "xclip installation failed.";
-    exit 1;
-fi;
+for app in "${packages[@]}"; do
+  echo "Instaling $app..."
+  sudo apt install -y $app
 
+  if [ $? -eq 0 ]; then
+  echo "$app installation complete.";
+  else
+    echo "$app installation failed.";
+    exit 1;
+  fi;
+done
 
 sudo apt autoremove

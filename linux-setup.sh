@@ -29,10 +29,10 @@ fi
 
 cp ./dotfiles/* ~/
 ./config-git.sh
+sudo ./install-oh-my-zsh.sh
 sudo ./install-node.sh
 sudo ./install-snap-apps.sh
 ./install-vscode-extensions.sh
 ./install-npm-global-packages.sh
-sudo ./install-oh-my-zsh.sh
 
 
