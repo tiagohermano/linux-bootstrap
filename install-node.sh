@@ -1,9 +1,3 @@
 # Install latest node w/ n(node version manager)
-git clone https://github.com/tj/n ${HOME}/sources/tj/n
-cd ${HOME}/sources/tj/n
-PREFIX=${HOME}/apps/n make install
-
-echo "Installing latest Node.js..."
-export N_PREFIX="${HOME}/apps/n"
-export PATH="$PATH:$N_PREFIX/bin"
-n latest
+curl -L https://git.io/n-install | bash
+n lts
