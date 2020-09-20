@@ -1,5 +1,6 @@
 #/bin/bash
 
+
 # Fill the array below with your apt-get essential packages 
 packages=(
   "vim"
@@ -7,6 +8,7 @@ packages=(
   "neovim"
   "xclip"
   "virtualbox"
+  "openscad"
 )
 
 for app in "${packages[@]}"; do
