@@ -20,6 +20,7 @@ packages=(
   "zsh" 
   "lutris" 
   "tableplus" 
+  "python3-pip" 
 )
 
 for app in "${packages[@]}"; do
