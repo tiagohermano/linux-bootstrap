@@ -3,6 +3,7 @@
 
 # Fill the array below with your apt-get essential packages 
 packages=(
+  "zsh"
   "vim"
   "snapd"
   "neovim"
@@ -13,7 +14,7 @@ packages=(
 
 for app in "${packages[@]}"; do
   echo "Instaling $app..."
-  sudo apt-get install -y $app
+  sudo apt-get -y install $app
 
   if [ $? -eq 0 ]; then
   echo "$app installation complete.";
