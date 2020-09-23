@@ -25,7 +25,7 @@ packages=(
 
 for app in "${packages[@]}"; do
   echo "Instaling $app..."
-  sudo apt install -y $app
+  sudo apt -y install $app
 
   if [ $? -eq 0 ]; then
   echo "$app installation complete.";
