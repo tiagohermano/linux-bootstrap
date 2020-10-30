@@ -20,6 +20,7 @@ set nocursorline
 syntax sync minlines=256
 set complete-=i
 set lazyredraw
+set ttyfast
 
 filetype plugin indent on
 filetype plugin indent on
@@ -45,38 +46,35 @@ set updatetime=50
 " Don't pass messages to |ins-completion-menu|.
 set shortmess+=c
 
-" Use 256 colours (Use this setting only if your terminal supports 256 colours)
-set t_Co=256
-
-let g:airline_solarized_bg='molokai'
 
 call plug#begin('~/.vim/plugged')
 
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'preservim/nerdtree'
 
 Plug 'ctrlpvim/ctrlp.vim' " CTRL + P SEARCH
-Plug 'herringtondarkholme/yats.vim' " TYPESCRIPT SYNTAX
 Plug 'scrooloose/nerdcommenter' " COMMENTER
 Plug 'jiangmiao/auto-pairs'
-"Plug 'ervandew/supertab'
 Plug 'Galooshi/vim-import-js'
-Plug 'easymotion/vim-easymotion'
+"Plug 'easymotion/vim-easymotion'
+Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } } " :Ag (global search) package 'silver searcher' needed
 Plug 'junegunn/fzf.vim'
 
 " THEMES
 Plug 'morhetz/gruvbox'
-Plug 'franbach/miramare'
+Plug 'sainnhe/gruvbox-material'
 Plug 'sonph/onehalf' , {'rtp': 'vim/'}
 Plug 'dracula/vim', { 'as': 'dracula' }
 
 " SYNTAX HIGHLIGHT
-Plug 'leafgarland/typescript-vim'
-Plug 'pangloss/vim-javascript'
+"Plug 'leafgarland/typescript-vim'
+"Plug 'pangloss/vim-javascript'
+"Plug 'peitalin/vim-jsx-typescript'
 Plug 'maxmellon/vim-jsx-pretty'
-"Plug 'styled-components/vim-styled-components'
+Plug 'styled-components/vim-styled-components'
 Plug 'dense-analysis/ale'
 Plug 'Yggdroot/indentLine'
 Plug 'hail2u/vim-css3-syntax'
@@ -102,9 +100,10 @@ Plug 'prettier/vim-prettier', {
       \ 'swift' ] }
 
 Plug 'tpope/vim-fugitive'
+Plug 'christoomey/vim-conflicted'
 Plug 'tpope/vim-surround'
 Plug 'mattn/emmet-vim'
-Plug 'valloric/youcompleteme'
+"Plug 'valloric/youcompleteme'
 "Plug 'zxqfl/tabnine-vim'
 Plug 'eslint/eslint'
 
@@ -142,6 +141,7 @@ nnoremap <silent> <C-Down> :resize -3<CR>
 " Hunk-add and hunk-revert for chunk staging
 nmap <Leader>ga <Plug>(GitGutterStageHunk)
 nmap <Leader>gu <Plug>(GitGutterUndoHunk)
+nmap <Leader>pp <Plug>(GitGutterPreviewHunk)
 
 " Unhighlight Text
 nnoremap <silent> <Leader>h :nohl<CR><C-l>
@@ -160,16 +160,25 @@ map <C-S-g> :Ag
 nnoremap <leader>gd :YcmCompleter GoTo<CR>
 
 " Navigate to next Lint/Ale Error
-nmap <silent> <leader>aj :ALENext<cr>
-nmap <silent> <leader>ak :ALEPrevious<cr>
+nmap <silent> <leader>ll :ALENext<cr>
+nmap <silent> <leader>hh :ALEPrevious<cr>
+
+" Emmet: replaces double quotes with single quotes
+let g:user_emmet_settings = {
+    \  'html' : {
+    \    'quote_char': "'",
+    \  },
+    \}
 
 " Configuracoes visuais do airline
-let g:airline_theme='dark'
+let g:airline_solarized_bg='dark'
+let g:airline_theme = 'gruvbox'
 let g:airline_powerline_fonts = 1
 let g:airline_left_sep = '»'
 let g:airline_left_sep = '▶'
 let g:airline_right_sep = '«'
 let g:airline_right_sep = '◀'
+let g:airline_extensions = []
 
 " Commenter
 nmap <C-]> <plug>NERDCommenterToggle
@@ -187,13 +196,13 @@ let g:ale_completion_enabled = 1
 
 " PRETTIER CONFIG
 " print semicolons
-let g:prettier#config#semi = 'false'
+"let g:prettier#config#semi = 'false'
 
 " single quotes over double quotes
-let g:prettier#config#single_quote = 'true'
+"let g:prettier#config#single_quote = 'true'
 
 " print spaces between brackets
-let g:prettier#config#bracket_spacing = 'true'
+"let g:prettier#config#bracket_spacing = 'true'
 
 " NERDTREE SETTINGS
 nmap <C-b> :NERDTreeToggle<CR>
@@ -202,9 +211,11 @@ let NERDTreeShowHidden=1
 
 " COLORSCHEME SETTINGS
 set termguicolors
-colorscheme gruvbox
+"colorscheme gruvbox-material
+colorscheme gruvbox-material
 set background=dark
-
+" Use 256 colours (Use this setting only if your terminal supports 256 colours)
+set t_Co=256
 
 " CLOSETAG FILES
 let g:closetag_regions = {
@@ -214,6 +225,7 @@ let g:closetag_regions = {
 
 " JSX COMMENTER SETTINGS
 autocmd FileType javascript.jsx setlocal commentstring={/*\ %s\ */}
+autocmd FileType typescript.tsx setlocal commentstring={/*\ %s\ */}
 
 if executable('rg')
   let g:rg_derive_root='true'
@@ -235,6 +247,3 @@ augroup VimCSS3Syntax
 
   autocmd FileType css setlocal iskeyword+=-
 augroup END
-
-" CREATE NEW FILE BINDING
-" command -nargs=1 E execute('silent! !mkdir -p "$(dirname "<args>")"') <Bar> e <args>
