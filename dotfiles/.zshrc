@@ -108,7 +108,7 @@ alias gco="git checkout"
 
 alias gr='grep --color -r'
 alias scan-network="sudo nmap -sn 192.168.15.0/24"
-
+alias meuip="curl -s https://ifconfig.me"
 export PATH=~/.npm-global/bin:$PATH
 
 export ANDROID_HOME=$HOME/Android/Sdk
