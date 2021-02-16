@@ -4,7 +4,7 @@ echo "Installing Docker..."
 curl -sSL https://get.docker.com | sh
 sudo usermod -aG docker pi
 
-echo "Installing dependencies..."
+echo "Installing basic dependencies..."
 sudo apt-get -y install curl apt-transport-https
 sudo apt-get install -y libffi-dev libssl-dev
 sudo apt-get install -y python3 python3-pip
