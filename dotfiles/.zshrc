@@ -96,7 +96,6 @@ source $ZSH/oh-my-zsh.sh
 #
 # Example aliases
 alias zshconfig="vim ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
 alias ssh-raspberry="ssh pi@192.168.15.15"
 alias ssh-gameficame-server="ssh -p 2222 sysadmin@registry.gamefica.me"
 
