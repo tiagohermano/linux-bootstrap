@@ -63,6 +63,7 @@ call plug#begin('~/.config/nvim/plugged')
     " set linebreak " set soft wrapping
     set nowrap " disable word wrapping
     set showbreak=↪
+    set smartindent
     set autoindent " automatically set indent of new line
     set ttyfast " faster redrawing
     set diffopt+=vertical,iwhite,internal,algorithm:patience,hiddenoff
@@ -252,8 +253,8 @@ call plug#begin('~/.config/nvim/plugged')
     " move line mappings
     " ∆ is <A-j> on macOS
     " ˚ is <A-k> on macOS
-	nnoremap <A-j> :m .+1<cr>==
-	nnoremap <A-k> :m .-2<cr>==
+    nnoremap <A-j> :m .+1<cr>==
+    nnoremap <A-k> :m .-2<cr>==
     inoremap ∆ <Esc>:m .+1<cr>==gi
     inoremap ˚ <Esc>:m .-2<cr>==gi
     vnoremap ∆ :m '>+1<cr>gv=gv
@@ -333,6 +334,7 @@ call plug#begin('~/.config/nvim/plugged')
 
 " General Functionality {{{
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+    Plug 'sheerun/vim-polyglot'
     " better terminal integration
     " substitute, search, and abbreviate multiple variants of a word
     " Plug 'tpope/vim-abolish'
@@ -477,7 +479,7 @@ call plug#begin('~/.config/nvim/plugged')
 
         if isdirectory(".git")
             " if in a git project, use :GFiles
-            nmap <silent> <leader>t :GitFiles --cached --others --exclude-standard<cr>
+            nmap <silent> <leader>t :GitFiles --ignore --cached --others --exclude-standard<cr>
         else
             " otherwise, use :FZF
             nmap <silent> <leader>t :FZF<cr>
@@ -707,6 +709,7 @@ call plug#end()
     else
         let g:onedark_termcolors=16
         let g:onedark_terminal_italics=1
+        set background=dark
         colorscheme one
     endif
     syntax on
