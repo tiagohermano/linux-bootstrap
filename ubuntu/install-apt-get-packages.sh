@@ -7,6 +7,7 @@ packages=(
   "vim"
   "snapd"
   "neovim"
+  "fzf"
   "xclip"
   "virtualbox"
   "openscad"

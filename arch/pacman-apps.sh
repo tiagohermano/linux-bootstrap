@@ -20,6 +20,11 @@ cd google-chrome
 makepkg -s
 sudo pacman -U google-chrome*.tar.xz
 
+# Install Fuzzy Finder
+echo "Installing Fuzzy Finder..."
+sudo pacman -S fzf
+
+echo "Installing Google Chrome..."
 # Install xclip [Terminal Clipboard Utilities]
 echo "Installing xclip..."
 sudo pacman -S xclip
