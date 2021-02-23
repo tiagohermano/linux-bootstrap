@@ -388,11 +388,11 @@ call plug#begin('~/.config/nvim/plugged')
     "     \  { 'type': 'commands',  'header': [ 'Commands' ]       },
     "     \ ]
 
-    "     let g:startify_commands = [
-    "     \   { 'up': [ 'Update Plugins', ':PlugUpdate' ] },
-    "     \   { 'ug': [ 'Upgrade Plugin Manager', ':PlugUpgrade' ] },
-    "     \   { 'uc': [ 'Update CoC Plugins', ':CocUpdate' ] },
-    "     \ ]
+        " let g:startify_commands = [
+        " \   { 'up': [ 'Update Plugins', ':PlugUpdate' ] },
+        " \   { 'ug': [ 'Upgrade Plugin Manager', ':PlugUpgrade' ] },
+        " \   { 'uc': [ 'Update CoC Plugins', ':CocUpdate' ] },
+        " \ ]
 
     "     let g:startify_bookmarks = [
     "         \ { 'c': '~/.config/nvim/init.vim' },
@@ -672,7 +672,8 @@ call plug#begin('~/.config/nvim/plugged')
     " }}}
 
     " TypeScript {{{
-        Plug 'leafgarland/typescript-vim', { 'for': ['typescript', 'typescript.tsx'] }
+        Plug 'herringtondarkholme/yats.vim'
+        let g:yats_host_keyword = 1
     " }}}
 
     " Styles {{{
@@ -710,7 +711,7 @@ call plug#end()
         let g:onedark_termcolors=16
         let g:onedark_terminal_italics=1
         set background=dark
-        colorscheme one
+        colorscheme gruvbox-material
     endif
     syntax on
     filetype plugin indent on
