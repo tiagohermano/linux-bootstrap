@@ -8,6 +8,16 @@ sudo add-apt-repository ppa:lutris-team/lutris # Lutris
 sudo apt update
 # Fill the array below with your apt essential packages 
 packages=(
+  "build-essential"
+  "default-jdk"
+  "libssl-dev"
+  "ack-grep"
+  "fontconfig"
+  "imagemagick"
+  "libmagickwand-dev"
+  "software-properties-common"
+  "silversearcher-ag"
+  "curl"
   "ubuntu-restricted-extras"
   "ffmpeg"
   "libavcodec-extra"
@@ -18,7 +28,6 @@ packages=(
   "zsh"
   "lutris"
   "python3-pip"
-  "silversearcher-ag"
 )
 
 for app in "${packages[@]}"; do
