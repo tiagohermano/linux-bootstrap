@@ -1,11 +1,9 @@
 #/bin/bash
 
 # Add GPG Keys
-wget -O - -q http://deb.tableplus.com/apt.tableplus.com.gpg.key | sudo apt-key add - # TablePlus
 
 # Add Repositories
 sudo add-apt-repository ppa:lutris-team/lutris # Lutris
-sudo add-apt-repository "deb [arch=amd64] https://deb.tableplus.com/debian tableplus main" # TablePlus
 
 sudo apt update
 # Fill the array below with your apt essential packages 
@@ -14,13 +12,13 @@ packages=(
   "ffmpeg"
   "libavcodec-extra"
   "libavcodec-extra57"
-  "libavutil55" 
-  "libavformat57" 
-  "zenity" 
-  "zsh" 
-  "lutris" 
-  "tableplus" 
-  "python3-pip" 
+  "libavutil55"
+  "libavformat57"
+  "zenity"
+  "zsh"
+  "lutris"
+  "python3-pip"
+  "silversearcher-ag"
 )
 
 for app in "${packages[@]}"; do
