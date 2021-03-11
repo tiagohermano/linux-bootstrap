@@ -1,9 +1,5 @@
 #!/bin/bash
 
-# Install Node.js and Npm
-echo "Installing Node.js and npm..."
-sudo pacman -S nodejs npm
-
 # Install Docker
 echo "Installing docker..."
 sudo pacman -S docker
@@ -20,11 +16,30 @@ cd google-chrome
 makepkg -s
 sudo pacman -U google-chrome*.tar.xz
 
-# Install Fuzzy Finder
-echo "Installing Fuzzy Finder..."
-sudo pacman -S fzf
+packages=(
+  "zsh"
+  "vim"
+  "snapd"
+  "kitty"
+  "neovim"
+  "fzf"
+  "xclip"
+  "virtualbox"
+  "openscad"
+  "xclip"
+  "vscode"
+)
 
-echo "Installing Google Chrome..."
-# Install xclip [Terminal Clipboard Utilities]
-echo "Installing xclip..."
-sudo pacman -S xclip
+for app in "${packages[@]}"; do
+  echo "Instaling $app..."
+  sudo pacman -S $app
+
+  if [ $? -eq 0 ]; then
+  echo "$app installation complete.";
+  else
+    echo "$app installation failed.";
+    exit 1;
+  fi;
+done
+
+
