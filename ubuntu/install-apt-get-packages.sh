@@ -1,14 +1,17 @@
-#/bin/bash
+#!/bin/bash
 
 # Fill the array below with your apt-get essential packages
 packages=(
-  "zsh"
-  "vim"
+  # "zsh"
+  # "vim"
   "snapd"
-  "neovim"
+  "ranger"
+  "silver-searcher-ag"
   "fzf"
+  "ripgrep"
   "xclip"
   "virtualbox"
+  "texlive"
   "openscad"
 )
 

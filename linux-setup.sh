@@ -9,6 +9,7 @@ elif [ "${1,,}" == "ubuntu" ] || [ "${1,,}" == "elementary" || [ "${1,,}" == "mi
 then
 	sudo ./ubuntu/configure-ubuntu.sh
 	sudo ./ubuntu/install-apt-packages.sh
+	sudo ./ubuntu/install-apt-get-packages.sh
 	sudo ./ubuntu/install-fonts.sh
 
 elif [ "${1,,}" == "arch" || "${1,,}" == "manjaro" ]
@@ -32,7 +33,6 @@ fi
 sudo ./install-oh-my-zsh.sh
 sudo ./install-node.sh
 sudo ./install-snap-apps.sh
-./install-vscode-extensions.sh
 ./install-npm-global-packages.sh
 
 

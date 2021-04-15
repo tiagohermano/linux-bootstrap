@@ -4,7 +4,6 @@
 npm_packages=(
   "@ionic/cli"
   "create-react-app"
-  "n"
   "npm"
   "yarn"
 )
