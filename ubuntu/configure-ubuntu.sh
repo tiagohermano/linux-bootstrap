@@ -15,3 +15,7 @@ sudo ln -frs /usr/lib/x86_64-linux-gnu/libavutil.so.52.6.100 /usr/lib/x86_64-lin
 sudo ln -frs /usr/lib/x86_64-linux-gnu/libavformat.so.54.36.100 /usr/lib/x86_64-linux-gnu/libavformat.so.54
 sudo ln -frs /usr/lib/x86_64-linux-gnu/libavcodec.so.54.71.100 /usr/lib/x86_64-linux-gnu/libavcodec.so.54
 sudo ldconfig
+rm -rf spotify_libraries
+
+# Fix delay when changing screen brightness or system volume through fn shortkeys
+# TODO: script to comment line: modifier_map Mod3 { Scroll_Lock };
