@@ -1,9 +1,12 @@
 #!/bin/bash
 
+sudo add-apt-repository ppa:agornostal/ulauncher
+
 # Fill the array below with your apt-get essential packages
 packages=(
   # "zsh"
   # "vim"
+  "neovim"
   "snapd"
   "ranger"
   "silver-searcher-ag"
@@ -13,6 +16,8 @@ packages=(
   "virtualbox"
   "texlive"
   "openscad"
+  "alacarte"
+  "ulauncher"
 )
 
 for app in "${packages[@]}"; do

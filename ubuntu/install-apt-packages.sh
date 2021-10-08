@@ -37,6 +37,7 @@ packages=(
   "docker-ce"
   "docker-ce-cli"
   "containerd.io"
+  "gnome-tweaks"
 )
 
 for app in "${packages[@]}"; do

@@ -11,6 +11,7 @@ then
 	sudo ./ubuntu/install-apt-packages.sh
 	sudo ./ubuntu/install-apt-get-packages.sh
 	sudo ./ubuntu/install-fonts.sh
+	sudo ./configure-keychron-k2.sh
 
 elif [ "${1,,}" == "arch" || "${1,,}" == "manjaro" ]
 then
