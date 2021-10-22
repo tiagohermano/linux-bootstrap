@@ -25,9 +25,9 @@ then
 
 elif [ "${1,,}" == "raspbian" ]
 then
-	sudo ./raspbian/configure-raspbian.sh
-	sudo ./raspbian/apps.sh
-	sudo ./raspbian/install-fonts.sh
+	sudo ./raspberry_pi_os/configure-raspbian.sh
+	sudo ./raspberry_pi_os/apps.sh
+	sudo ./raspberry_pi_os/install-fonts.sh
 
 else
 	echo -e "You misspelled your system, or it is not supported."
