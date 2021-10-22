@@ -2,10 +2,8 @@
 
 # Fill the array below with your favorite Snapcraft apps
 snap_apps=(
-# "slack --classic" // Not working on some systems yet
   "postman"
   "chromium"
-# "code --classic" // Not working on some systems yet
   "gimp"
   "arduino"
   "telegram-desktop"

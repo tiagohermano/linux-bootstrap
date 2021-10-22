@@ -7,6 +7,8 @@ then
 
 elif [ "${1,,}" == "ubuntu" ] || [ "${1,,}" == "elementary" || [ "${1,,}" == "mint" || [ "${1,,}" == "pop-os" ]
 then
+	sudo ./ubuntu/terminal-configuration.sh
+	sudo ./install-node.sh
 	sudo ./ubuntu/configure-ubuntu.sh
 	sudo ./ubuntu/install-apt-packages.sh
 	sudo ./ubuntu/install-apt-get-packages.sh
@@ -15,8 +17,10 @@ then
 
 elif [ "${1,,}" == "arch" || "${1,,}" == "manjaro" ]
 then
+	sudo ./ubuntu/terminal-configuration.sh
 	sudo ./arch/configure-arch.sh
 	sudo ./arch/pacman-apps.sh
+	sudo ./install-node.sh
 	sudo ./arch/install-fonts.sh
 
 elif [ "${1,,}" == "raspbian" ]

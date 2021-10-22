@@ -8,6 +8,7 @@ sudo sysctl -p
 
 # Install aditional spotify media libraries
 echo "Installing spotify aditional media libraries..."
+cd ${HOME}
 git clone https://github.com/ramedeiros/spotify_libraries.git
 cd spotify_libraries
 sudo cp lib* /usr/lib/x86_64-linux-gnu/
