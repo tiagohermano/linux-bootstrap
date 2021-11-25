@@ -5,6 +5,13 @@ lvim.format_on_save = true
 lvim.lint_on_save = true
 lvim.colorscheme = "tokyonight"
 
+vim.opt.cmdheight = 1
+vim.opt.guifont = "monospace:16"
+vim.opt.relativenumber = true
+vim.opt.cursorline = false
+
+lvim.builtin.lualine.style = "lvim"
+
 -- keymappings [view all the defaults by pressing <leader>Lk]
 lvim.leader = "space"
 -- add your own keymapping
@@ -13,6 +20,7 @@ lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
 -- lvim.keys.normal_mode["<C-Up>"] = ""
 -- edit a default keymapping
 -- lvim.keys.normal_mode["<C-q>"] = ":q<cr>"
+lvim.keys.normal_mode["Y"] = "y$"
 lvim.keys.normal_mode["<leader>q"] = nil
 lvim.keys.normal_mode["<leader>q"] = ":BufferClose<CR>"
 lvim.keys.normal_mode["<leader>,"] = ":w<CR>"
