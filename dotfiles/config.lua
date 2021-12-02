@@ -4,7 +4,13 @@
 lvim.format_on_save = true
 lvim.lint_on_save = true
 lvim.colorscheme = "tokyonight"
-lvim.relativenumber = true
+
+vim.opt.cmdheight = 1
+vim.opt.guifont = "monospace:16"
+vim.opt.relativenumber = true
+vim.opt.cursorline = false
+
+lvim.builtin.lualine.style = "lvim"
 
 -- keymappings [view all the defaults by pressing <leader>Lk]
 lvim.leader = "space"
@@ -14,6 +20,7 @@ lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
 -- lvim.keys.normal_mode["<C-Up>"] = ""
 -- edit a default keymapping
 -- lvim.keys.normal_mode["<C-q>"] = ":q<cr>"
+lvim.keys.normal_mode["Y"] = "y$"
 lvim.keys.normal_mode["<leader>q"] = nil
 lvim.keys.normal_mode["<leader>q"] = ":BufferClose<CR>"
 lvim.keys.normal_mode["<leader>,"] = ":w<CR>"
@@ -63,11 +70,6 @@ lvim.transparent_window = true
 lvim.format_on_save = false
 
 vim.g.tidal_target = "terminal"
-
-vim.opt.cmdheight = 1
-vim.opt.guifont = "monospace:16"
-vim.opt.relativenumber = true
-vim.opt.cursorline = false
 
 -- generic LSP settings
 -- you can set a custom on_attach function that will be used for all the language servers
@@ -122,7 +124,8 @@ lvim.plugins = {
     {'joshdick/onedark.vim'},
     {"tpope/vim-fugitive"},
     {"tidalcycles/vim-tidal"},
-    {"terryma/vim-multiple-cursors"}
+    {"terryma/vim-multiple-cursors"},
+    {"tpope/vim-surround"}
 }
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
