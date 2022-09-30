@@ -3,10 +3,11 @@
 -- general
 lvim.format_on_save = true
 lvim.lint_on_save = true
-lvim.colorscheme = "tokyonight"
+lvim.colorscheme = "catppuccin"
+-- lvim.colorscheme = "catppuccin"
 
 vim.opt.cmdheight = 1
-vim.opt.guifont = "monospace:16"
+vim.opt.guifont = "monospace:15"
 vim.opt.relativenumber = true
 vim.opt.cursorline = false
 
@@ -20,7 +21,7 @@ lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
 -- lvim.keys.normal_mode["<C-Up>"] = ""
 -- edit a default keymapping
 -- lvim.keys.normal_mode["<C-q>"] = ":q<cr>"
-lvim.keys.normal_mode["Y"] = "y$"
+-- lvim.keys.normal_mode["Y"] = "y$"
 lvim.keys.normal_mode["<leader>q"] = nil
 lvim.keys.normal_mode["<leader>q"] = ":BufferClose<CR>"
 lvim.keys.normal_mode["<leader>,"] = ":w<CR>"
@@ -28,6 +29,8 @@ lvim.keys.normal_mode["<C-b>"] = ":NvimTreeToggle<CR>"
 lvim.keys.normal_mode["<C-r>"] = ":lua vim.lsp.buf.rename()<CR>"
 lvim.keys.normal_mode["<leader>z"] = ":vs<CR>"
 lvim.keys.normal_mode["<leader>t"] = ":Telescope find_files<CR>"
+lvim.keys.normal_mode["<S-l>"] = ":bnext<CR>"
+lvim.keys.normal_mode["<S-h>"] = ":bprevious<CR>"
 
 -- Change Telescope navigation to use j and k for navigation and n and p for history in both input and normal mode.
 -- lvim.builtin.telescope.on_config_done = function()
@@ -56,10 +59,10 @@ lvim.keys.normal_mode["<leader>t"] = ":Telescope find_files<CR>"
 
 -- TODO: User Config for predefined plugins
 -- After changing plugin config exit and reopen LunarVim, Run :PackerInstall :PackerCompile
-lvim.builtin.dashboard.active = true
+lvim.builtin.alpha.active = true
 lvim.builtin.terminal.active = true
 lvim.builtin.nvimtree.setup.view.side = "left"
-lvim.builtin.nvimtree.show_icons.git = 0
+-- lvim.builtin.nvimtree.show_icons.git = 0
 vim.g.tokyonight_transparent_sidebar = true
 
 -- if you don't want all the parsers change this to a table of the ones you want
@@ -69,7 +72,16 @@ lvim.builtin.autopairs.active = true
 lvim.transparent_window = true
 lvim.format_on_save = false
 
+-- tidal.vim
+vim.local_leader = ","
 vim.g.tidal_target = "terminal"
+lvim.keys.normal_mode["<leader>mh"] = ":TidalHush<CR>"
+lvim.keys.normal_mode["<C-e>"] = ":TidalSend<CR>"
+lvim.keys.normal_mode["<C-h>"] = nil
+
+-- FoxDot.vim
+vim.g.sclang_executable_path = "/usr/local/bin/sclang"
+vim.g.python_executable_path = "/usr/bin/python"
 
 -- generic LSP settings
 -- you can set a custom on_attach function that will be used for all the language servers
@@ -111,20 +123,36 @@ vim.g.tidal_target = "terminal"
 --     args = {}
 --   }
 -- }
+local opts = {
+  root_dir = function(fname)
+    return require("lspconfig").util.root_pattern ".git" (fname) or require("lspconfig").util.path.dirname(fname)
+  end,
+  filetypes = { "typescriptreact", "javascriptreact", "html", "htmldjango" }
+}
+require("lvim.lsp.manager").setup("tailwindcss", opts)
+require("lvim.lsp.manager").setup("emmet_ls", opts)
+
+local code_actions = require "lvim.lsp.null-ls.code_actions"
+code_actions.setup {
+  {
+    exe = "eslint_d",
+    filetypes = { "typescript", "typescriptreact", "javascript", "javascriptreact", "vue" },
+  },
+}
 
 -- Additional Plugins
+
 lvim.plugins = {
-    {"folke/tokyonight.nvim"}, {
-        "ray-x/lsp_signature.nvim",
-        config = function() require"lsp_signature".on_attach() end,
-        event = "InsertEnter"
-    },
-    {'bluz71/vim-nightfly-guicolors'},
-    {'pineapplegiant/spaceduck'},
-    {'joshdick/onedark.vim'},
-    {"tpope/vim-fugitive"},
-    {"tidalcycles/vim-tidal"},
-    {"terryma/vim-multiple-cursors"}
+  { "folke/tokyonight.nvim" },
+  { 'joshdick/onedark.vim' },
+  { "terryma/vim-multiple-cursors" },
+  { "tpope/vim-surround" },
+  { "tidalcycles/vim-tidal" },
+  -- { "ggandor/lightspeed.nvim" },
+  -- { "fools-mate/cmp-tidal" },
+  { "catppuccin/nvim", as = "catppuccin", transparent_background = true },
+  { "ellisonleao/gruvbox.nvim" },
+  { "mangeshrex/everblush.vim" }
 }
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
